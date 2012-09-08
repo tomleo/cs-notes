@@ -1,0 +1,360 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Constants &mdash; Programming Notes 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Programming Notes 1.0 documentation" href="../index.html" />
+    <link rel="up" title="Ruby Notes" href="../index_ruby.html" />
+    <link rel="next" title="Ruby on Rails" href="rails.html" />
+    <link rel="prev" title="Ruby Notes" href="../index_ruby.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="rails.html" title="Ruby on Rails"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../index_ruby.html" title="Ruby Notes"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Programming Notes 1.0 documentation</a> &raquo;</li>
+          <li><a href="../index_ruby.html" accesskey="U">Ruby Notes</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="constants">
+<h1>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h1>
+<p>constants can&#8217;t be changed</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">EmpireStateBuilding</span> <span class="o">=</span> <span class="s2">&quot;350 5th Avenue, NYC, NY&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="objects">
+<h1>Objects<a class="headerlink" href="#objects" title="Permalink to this headline">¶</a></h1>
+<p>Everthing is an object. Objects created via a constructor. Standard constructor is &#8220;new&#8221;</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">item_one</span> <span class="o">=</span> <span class="no">LineItem</span><span class="o">.</span><span class="n">new</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="methods">
+<h1>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h1>
+<p>! and ? can be used in method names</p>
+<p>method definition starts with def</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">def</span> <span class="nf">yourage</span> <span class="p">(</span> <span class="n">dob</span> <span class="p">)</span>
+   <span class="c1">#code goes here</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="class-methods">
+<h1>Class Methods<a class="headerlink" href="#class-methods" title="Permalink to this headline">¶</a></h1>
+<p>use double colon (creates instance object)</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">Door</span><span class="o">::</span><span class="kp">new</span><span class="p">(</span> <span class="ss">:oak</span> <span class="p">)</span>
+</pre></div>
+</div>
+<p>you can print the an objects type/class</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">print</span> <span class="mi">5</span><span class="o">.</span><span class="n">class</span>                       <span class="c1"># prints &#39;Integer&#39;</span>
+<span class="nb">print</span> <span class="s1">&#39;wishing for antlers&#39;</span><span class="o">.</span><span class="n">class</span>   <span class="c1"># prints &#39;String&#39;</span>
+<span class="nb">print</span> <span class="no">WishMaker</span><span class="o">.</span><span class="n">new</span><span class="o">.</span><span class="n">class</span>           <span class="c1"># prints &#39;WishMaker&#39;</span>
+</pre></div>
+</div>
+<p>accessor methods are created for you.</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="kp">attr_accessor</span>  <span class="ss">:robot1</span>  <span class="c1">#creates get/set methods for robot1</span>
+<span class="kp">attr_reader</span>    <span class="ss">:robot2</span>  <span class="c1">#creates get method for robot1</span>
+<span class="kp">attr_writer</span>    <span class="ss">:robot3</span>  <span class="c1">#creates set method only</span>
+</pre></div>
+</div>
+<p>privacy is done like this</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">class</span> <span class="nc">Myclass</span>
+   <span class="k">def</span> <span class="nf">m1</span>   <span class="c1">#public method</span>
+   <span class="k">end</span>
+
+   <span class="kp">protected</span>
+
+   <span class="k">def</span> <span class="nf">m2</span>   <span class="c1">#this method is protected</span>
+   <span class="k">end</span>
+
+   <span class="kp">private</span>
+
+   <span class="k">def</span> <span class="nf">m3</span>   <span class="c1">#this method is private</span>
+   <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="modules">
+<h1>Modules<a class="headerlink" href="#modules" title="Permalink to this headline">¶</a></h1>
+<p>Hold collection of methods.
+Act as a namespace.
+Allow to share funcionality between classes. (</p>
+</div>
+<div class="section" id="variables">
+<h1>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h1>
+<p>variables that begin with $ are global</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="vg">$Chucky_bacon</span>
+</pre></div>
+</div>
+<p>variables begin with &#64; are instance variables</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="vi">@my_chunky_bacon</span>
+</pre></div>
+</div>
+<p>class variables begin with &#64;&#64;</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="vc">@@super_chunky_bacon</span>
+</pre></div>
+</div>
+<p>code blocks can be created with {/} or do/end</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="mi">2</span><span class="o">.</span><span class="n">times</span> <span class="p">{</span> <span class="nb">print</span> <span class="s2">&quot;Hellow World&quot;</span> <span class="p">}</span>
+
+<span class="kp">loop</span> <span class="k">do</span>
+   <span class="nb">print</span> <span class="s2">&quot;Another Hello&quot;</span>
+   <span class="nb">print</span> <span class="s2">&quot;World&quot;</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+<p>you can pass arguments to blocks using the | character</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="p">{</span> <span class="o">|</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="o">|</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="range">
+<h1>Range<a class="headerlink" href="#range" title="Permalink to this headline">¶</a></h1>
+<p>creates range of numbers or chars</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">3</span><span class="p">)</span> <span class="c1"># numbers 1-3</span>
+
+<span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="o">.</span><span class="n">.</span><span class="s1">&#39;z&#39;</span><span class="p">)</span> <span class="c1"># letters a-z</span>
+
+<span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="o">.</span><span class="mi">5</span><span class="p">)</span> <span class="c1"># numbers 0-4</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="arrays">
+<h1>Arrays<a class="headerlink" href="#arrays" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="o">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="o">]</span>
+
+<span class="o">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="o">]</span>
+</pre></div>
+</div>
+<p>Shortcut for creating arrays</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">a</span> <span class="o">=</span> <span class="sx">%w{ a b c }</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="hashes">
+<h1>Hashes<a class="headerlink" href="#hashes" title="Permalink to this headline">¶</a></h1>
+<p>aka dictionary</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="p">{</span><span class="s1">&#39;a&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;bannana&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="string">
+<h1>String<a class="headerlink" href="#string" title="Permalink to this headline">¶</a></h1>
+<p>Single quoted strings simply contain text, Double quoted strings allow for expression interpolation</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="nb">print</span> <span class="s1">&#39;2+2=#{2+2}&#39;</span> <span class="c1">#returns&gt;  2+2=#{2+2}</span>
+
+<span class="nb">print</span> <span class="s2">&quot;2+2=</span><span class="si">#{</span><span class="mi">2</span><span class="o">+</span><span class="mi">2</span><span class="si">}</span><span class="s2">&quot;</span> <span class="c1">#returns&gt;  2+2=4</span>
+</pre></div>
+</div>
+<p>Double quoted strings that span multiple lines can we written using</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="sx">%{This sentence</span>
+<span class="sx">   Spans</span>
+<span class="sx">   Lots</span>
+<span class="sx">   Of Lines}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="operators">
+<h1>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">¶</a></h1>
+<dl class="docutils">
+<dt>&lt;&lt;</dt>
+<dd><p class="first">concatenation operator, appends</p>
+<div class="last highlight-ruby"><div class="highlight"><pre><span class="n">email</span> <span class="o">=</span> <span class="s2">&quot;tom&quot;</span>
+<span class="n">email</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;@tomleo.com&quot;</span>
+</pre></div>
+</div>
+</dd>
+<dt>nil?</dt>
+<dd><p class="first">checks if method is nill. nill is an object.</p>
+<div class="last highlight-ruby"><div class="highlight"><pre><span class="nb">print</span><span class="p">(</span> <span class="k">if</span> <span class="n">myfunction</span><span class="o">.</span><span class="n">nil?</span>
+   <span class="s2">&quot;The Function is nill&quot;</span>
+<span class="k">else</span>
+   <span class="s2">&quot;The Function has value!&quot;</span>
+<span class="k">end</span> <span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="docutils">
+<dt>==</dt>
+<dd><p class="first">This is a method</p>
+<div class="last highlight-ruby"><div class="highlight"><pre><span class="k">if</span> <span class="n">baconTastesGood</span><span class="o">.</span><span class="n">=</span><span class="o">=</span><span class="p">(</span><span class="kp">true</span><span class="p">)</span>
+   <span class="c1">#Yum</span>
+
+<span class="k">if</span> <span class="n">baconTastesGood</span><span class="o">==</span><span class="p">(</span><span class="kp">true</span><span class="p">)</span>
+   <span class="c1">#Yum</span>
+
+<span class="k">if</span> <span class="n">baconTastesGodd</span>
+   <span class="c1">#Yum</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<dl class="docutils">
+<dt>||</dt>
+<dd>Or operator</dd>
+</dl>
+<p>a operation b</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">price</span> <span class="o">*=</span> <span class="n">discount</span>
+<span class="n">count</span> <span class="o">||=</span> <span class="mi">0</span>    <span class="c1">#count = count || 0</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>gsub</dt>
+<dd>short for global subsitution</dd>
+</dl>
+</div>
+<div class="section" id="file-class">
+<h1>File class<a class="headerlink" href="#file-class" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="no">File</span><span class="o">::</span><span class="n">read</span><span class="p">(</span><span class="s2">&quot;notefile.txt&quot;</span><span class="p">)</span>
+<span class="no">File</span><span class="o">::</span><span class="n">rename</span><span class="p">(</span><span class="s2">&quot;oldfile.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;newfile.txt&quot;</span><span class="p">)</span>
+<span class="no">File</span><span class="o">::</span><span class="n">delete</span><span class="p">(</span><span class="s2">&quot;newfile.txt&quot;</span><span class="p">)</span>
+<span class="no">File</span><span class="o">::</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;notes.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>  <span class="c1">#writes to new file</span>
+<span class="no">File</span><span class="o">::</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;notes.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>  <span class="c1">#reads from file</span>
+<span class="no">File</span><span class="o">::</span><span class="nb">open</span><span class="p">(</span><span class="s1">&#39;notes.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>  <span class="c1">#adds to end of file</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="flow-of-control">
+<h1>Flow of control<a class="headerlink" href="#flow-of-control" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">case</span> <span class="n">grade</span>
+<span class="k">when</span> <span class="mi">100</span>
+   <span class="s2">&quot;A+&quot;</span>
+<span class="k">when</span> <span class="mi">90</span><span class="o">.</span><span class="n">.</span><span class="mi">99</span>
+   <span class="s2">&quot;A&quot;</span>
+<span class="k">when</span> <span class="mi">80</span><span class="o">.</span><span class="n">.</span><span class="mi">89</span>
+   <span class="s2">&quot;B&quot;</span>
+<span class="k">when</span> <span class="mi">70</span><span class="o">.</span><span class="n">.</span><span class="mi">79</span>
+   <span class="s2">&quot;C&quot;</span>
+<span class="k">when</span> <span class="mi">60</span><span class="o">.</span><span class="n">.</span><span class="mi">69</span>
+   <span class="s2">&quot;D&quot;</span>
+<span class="k">when</span> <span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">59</span>
+   <span class="s2">&quot;F&quot;</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="regular-expressions-regex">
+<h1>Regular Expressions (regex)<a class="headerlink" href="#regular-expressions-regex" title="Permalink to this headline">¶</a></h1>
+<p>=~ is the match operator to test strings against regular expressions</p>
+<div class="highlight-ruby"><div class="highlight"><pre><span class="k">if</span> <span class="n">line</span> <span class="o">=~</span> <span class="sr">/P(erl|ython)/</span>
+   <span class="nb">puts</span> <span class="s2">&quot;What other scripting lanuage is work learning?&quot;</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">Constants</a></li>
+<li><a class="reference internal" href="#objects">Objects</a></li>
+<li><a class="reference internal" href="#methods">Methods</a></li>
+<li><a class="reference internal" href="#class-methods">Class Methods</a></li>
+<li><a class="reference internal" href="#modules">Modules</a></li>
+<li><a class="reference internal" href="#variables">Variables</a></li>
+<li><a class="reference internal" href="#range">Range</a></li>
+<li><a class="reference internal" href="#arrays">Arrays</a></li>
+<li><a class="reference internal" href="#hashes">Hashes</a></li>
+<li><a class="reference internal" href="#string">String</a></li>
+<li><a class="reference internal" href="#operators">Operators</a></li>
+<li><a class="reference internal" href="#file-class">File class</a></li>
+<li><a class="reference internal" href="#flow-of-control">Flow of control</a></li>
+<li><a class="reference internal" href="#regular-expressions-regex">Regular Expressions (regex)</a></li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../index_ruby.html"
+                        title="previous chapter">Ruby Notes</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="rails.html"
+                        title="next chapter">Ruby on Rails</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/ruby/ruby_basics.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="rails.html" title="Ruby on Rails"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../index_ruby.html" title="Ruby Notes"
+             >previous</a> |</li>
+        <li><a href="../index.html">Programming Notes 1.0 documentation</a> &raquo;</li>
+          <li><a href="../index_ruby.html" >Ruby Notes</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Tom Leo.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

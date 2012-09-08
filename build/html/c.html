@@ -1,0 +1,265 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>C Programming Notes &mdash; Programming Notes 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Programming Notes 1.0 documentation" href="index.html" />
+    <link rel="next" title="C++ Notes" href="cpp.html" />
+    <link rel="prev" title="Arduino" href="arduino.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="cpp.html" title="C++ Notes"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="arduino.html" title="Arduino"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Programming Notes 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="c-programming-notes">
+<h1>C Programming Notes<a class="headerlink" href="#c-programming-notes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="c-basics">
+<h2>C Basics<a class="headerlink" href="#c-basics" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="basics">
+<h3>Basics<a class="headerlink" href="#basics" title="Permalink to this headline">¶</a></h3>
+<p>&amp; gives the address of an object
+* dereferencing operation - gets object pointer points to</p>
+<dl class="docutils">
+<dt>alloc(n)</dt>
+<dd>returns pointer to n consecutive character positions</dd>
+<dt>afree(p)</dt>
+<dd>releases storage
+- must be made in opposite order to the calls made on alloc</dd>
+</dl>
+<p>malloc</p>
+<p>free</p>
+<p>NODE STRUCTURE</p>
+<dl class="docutils">
+<dt>struct type_node {</dt>
+<dd>void * data;
+struct type_node * prev;
+struct type_node * next;</dd>
+</dl>
+<p>};</p>
+<p>main()
+{</p>
+<blockquote>
+<div>struct type_node * head;
+return 0;</div></blockquote>
+<p>}</p>
+<p>//allocate space for a structure
+struct type_node * pNode;
+pNode = talloc(); //talloc routine returns pointer</p>
+<blockquote>
+<div>//to a free space to hold the node</div></blockquote>
+</div>
+<div class="section" id="io">
+<h3>IO<a class="headerlink" href="#io" title="Permalink to this headline">¶</a></h3>
+<p>getline adds &#8216;0&#8217; at end of array it reads
+so &#8220;hellon&#8221; is stored as [h][e][l][l][o][n][0]</p>
+</div>
+<div class="section" id="register-declaration">
+<h3>Register declaration<a class="headerlink" href="#register-declaration" title="Permalink to this headline">¶</a></h3>
+<p>Register declaration</p>
+<blockquote>
+<div><p>f(register unsigned m, register long n)
+{</p>
+<blockquote>
+<div>register int i;</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</div>
+<div class="section" id="macro-subsitution">
+<h3>Macro Subsitution<a class="headerlink" href="#macro-subsitution" title="Permalink to this headline">¶</a></h3>
+<p>Macro Substitution</p>
+<blockquote>
+<div>#define name replacement text
+#define forever for (;;) /* infinite loop <a href="#id1"><span class="problematic" id="id2">*</span></a>/</div></blockquote>
+</div>
+</div>
+<div class="section" id="socket-programming">
+<h2>Socket Programming<a class="headerlink" href="#socket-programming" title="Permalink to this headline">¶</a></h2>
+<p>Big-endian        bytes are in a normal order
+Little-endian     bytes are backwards</p>
+<p>Convert numbers to Network Byte Order before they go out the wire</p>
+<p>htons()           Host to Network Short
+htonl()           host to network long</p>
+<p>Convert them to Host Byte Order as they come in off the wire
+ntohs()           network to host short
+ntohl()           network to host long</p>
+<dl class="docutils">
+<dt>struct addrinfo {</dt>
+<dd><p class="first">int              ai_flags;     // AI_PASSIVE, AI_CANONNAME, etc.
+int              ai_family;    // AF_INET, AF_INET6, AF_UNSPEC
+int              ai_socktype;  // SOCK_STREAM, SOCK_DGRAM
+int              ai_protocol;  // use 0 for &#8220;any&#8221;
+size_t           ai_addrlen;   // size of ai_addr in bytes
+struct sockaddr <a href="#id3"><span class="problematic" id="id4">*</span></a>ai_addr;      // struct sockaddr_in or _in6
+char            <a href="#id5"><span class="problematic" id="id6">*</span></a>ai_canonname; // full canonical hostname</p>
+<p class="last">struct addrinfo <a href="#id7"><span class="problematic" id="id8">*</span></a>ai_next;      // linked list, next node</p>
+</dd>
+</dl>
+<p>};</p>
+<dl class="docutils">
+<dt>struct sockaddr {</dt>
+<dd>unsigned short    sa_family;    // address family, AF_xxx
+char              sa_data[14];  // 14 bytes of protocol address</dd>
+</dl>
+<p>};</p>
+<p>// (IPv4 only&#8211;see struct sockaddr_in6 for IPv6)
+struct sockaddr_in {</p>
+<blockquote>
+<div>short int          sin_family;  // Address family, AF_INET
+unsigned short int sin_port;    // Port number
+struct in_addr     sin_addr;    // Internet address
+unsigned char      sin_zero[8]; // Same size as struct sockaddr</div></blockquote>
+<p>};</p>
+<p>// (IPv4 only&#8211;see struct in6_addr for IPv6)
+// Internet address (a structure for historical reasons)
+struct in_addr {</p>
+<blockquote>
+<div>uint32_t s_addr; // that&#8217;s a 32-bit int (4 bytes)</div></blockquote>
+<p>};</p>
+<p>inet_ntop()            network to presentation</p>
+<p>// IPv4:
+char ip4[INET_ADDRSTRLEN];  // space to hold the IPv4 string
+struct sockaddr_in sa;      // pretend this is loaded with something</p>
+<p>inet_ntop(AF_INET, &amp;(sa.sin_addr), ip4, INET_ADDRSTRLEN);
+printf(&#8220;The IPv4 address is: %sn&#8221;, ip4);</p>
+<p>// IPv6:
+char ip6[INET6_ADDRSTRLEN]; // space to hold the IPv6 string
+struct sockaddr_in6 sa6;    // pretend this is loaded with something
+inet_ntop(AF_INET6, &amp;(sa6.sin6_addr), ip6, INET6_ADDRSTRLEN);
+printf(&#8220;The address is: %sn&#8221;, ip6);</p>
+<p>#include &lt;sys/types.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;netdb.h&gt;
+int getaddrinfo(const char <a href="#id9"><span class="problematic" id="id10">*</span></a>node,     // e.g. &#8220;www.example.com&#8221; or IP</p>
+<blockquote>
+<div>const char <a href="#id11"><span class="problematic" id="id12">*</span></a>service,  // e.g. &#8220;http&#8221; or port number
+const struct addrinfo <a href="#id13"><span class="problematic" id="id14">*</span></a>hints,
+struct addrinfo <a href="#id15"><span class="problematic" id="id16">**</span></a>res);</div></blockquote>
+<p>int status;
+struct addrinfo hints;
+struct addrinfo <a href="#id17"><span class="problematic" id="id18">*</span></a>servinfo;  // will point to the results</p>
+<p>memset(&amp;hints, 0, sizeof hints); // make sure the struct is empty
+hints.ai_family = AF_UNSPEC;     // don&#8217;t care IPv4 or IPv6
+hints.ai_socktype = SOCK_STREAM; // TCP stream sockets
+hints.ai_flags = AI_PASSIVE;     // fill in my IP for me</p>
+<dl class="docutils">
+<dt>if ((status = getaddrinfo(NULL, &#8220;3490&#8221;, &amp;hints, &amp;servinfo)) != 0) {</dt>
+<dd>fprintf(stderr, &#8220;getaddrinfo error: %sn&#8221;, gai_strerror(status));
+exit(1);</dd>
+</dl>
+<p>}</p>
+<p>// servinfo now points to a linked list of 1 or more struct addrinfos
+// ... do everything until you don&#8217;t need servinfo anymore ....
+freeaddrinfo(servinfo); // free the linked-list</p>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">C Programming Notes</a><ul>
+<li><a class="reference internal" href="#c-basics">C Basics</a><ul>
+<li><a class="reference internal" href="#basics">Basics</a></li>
+<li><a class="reference internal" href="#io">IO</a></li>
+<li><a class="reference internal" href="#register-declaration">Register declaration</a></li>
+<li><a class="reference internal" href="#macro-subsitution">Macro Subsitution</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#socket-programming">Socket Programming</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="arduino.html"
+                        title="previous chapter">Arduino</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="cpp.html"
+                        title="next chapter">C++ Notes</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/c.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="cpp.html" title="C++ Notes"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="arduino.html" title="Arduino"
+             >previous</a> |</li>
+        <li><a href="index.html">Programming Notes 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Tom Leo.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

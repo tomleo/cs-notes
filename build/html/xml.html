@@ -1,0 +1,207 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>XML Notes &mdash; Programming Notes 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Programming Notes 1.0 documentation" href="index.html" />
+    <link rel="next" title="JavaScript Notes" href="index_js.html" />
+    <link rel="prev" title="GNU Make Notes" href="gnu_make.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="index_js.html" title="JavaScript Notes"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="gnu_make.html" title="GNU Make Notes"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Programming Notes 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="xml-notes">
+<h1>XML Notes<a class="headerlink" href="#xml-notes" title="Permalink to this headline">¶</a></h1>
+<p>No prebdefined tags, define your own, XML schema or DTD to descrive data</p>
+<p>XML used to create XHTML and RSS:</p>
+<div class="highlight-python"><pre>&lt;?xml version="1.0" encoding="ISO-8859-1" ?&gt;</pre>
+</div>
+<p>XML declaration defines version and encoding</p>
+<p>XML must contain root element (parent of other elements)</p>
+<div class="section" id="syntax-rules">
+<h2>Syntax Rules<a class="headerlink" href="#syntax-rules" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>closed tags</li>
+<li>case sensitive tags</li>
+<li>elements properly nested</li>
+<li>must have root element</li>
+<li>attributes quoted</li>
+<li>errors stop XML app</li>
+</ul>
+<p>XML comment:</p>
+<div class="highlight-python"><pre>&lt;!-- comment --&gt;</pre>
+</div>
+<dl class="docutils">
+<dt>CDATA</dt>
+<dd><p class="first">like comments, everything inside ignored by parser:</p>
+<div class="last highlight-python"><pre>&lt;![CDATA[   comment goes here      ]]&gt;</pre>
+</div>
+</dd>
+</dl>
+<ul class="simple">
+<li>white spaces are not removed</li>
+<li>attributes have info not part of data</li>
+<li>attributes must be enclosed into qutoes single or double</li>
+<li>meta data should be stored as attributes</li>
+</ul>
+<p>Sample Code:</p>
+<div class="highlight-python"><pre>&lt;?xml version = "" encoding = "" ?&gt;
+&lt;root element&gt;
+    &lt;child&gt;blah&lt;/child&gt;
+    &lt;elements&gt;blach&lt;/elements&gt;
+&lt;/root element&gt;
+&lt;!-- comment --&gt;</pre>
+</div>
+<p>Embeded XML (in html):</p>
+<div class="highlight-python"><pre>&lt;xml id="note" src="note.xml"&gt;&lt;/xml&gt;</pre>
+</div>
+<p>XML table:</p>
+<div class="highlight-python"><pre>&lt;table&gt;&lt;tr&gt;
+    &lt;td&gt;Apples&lt;/td&gt;
+&lt;/tr&gt;&lt;/table&gt;</pre>
+</div>
+<p>XML table with more info:</p>
+<div class="highlight-python"><pre>&lt;h:table&gt;
+    &lt;h:name&gt;Tom&lt;/h:name&gt;        &lt;!--Prefix tags to avoid element name conflicts--&gt;
+    &lt;h:width&gt;80&lt;/h:width&gt;
+    &lt;h:length&gt;80&lt;/h:length&gt;
+&lt;/h:table&gt;</pre>
+</div>
+<p>Namespace of element associates to child elements with same prefix:</p>
+<div class="highlight-python"><pre>xmlns:namespace-prefix = "namespace URL"</pre>
+</div>
+<ul class="simple">
+<li>saving xml as unicode to understand foreign chars
+creates errors in netscape if xml has foreign chars
+netscape error if encoding is UTF-16</li>
+</ul>
+<p>Escape Chars:</p>
+<div class="highlight-python"><pre>&amp;lt;    = &lt;
+&amp;gt;    = &gt;
+&amp;amp;   = &amp;
+&amp;apos;  = '
+&amp;quot   = "</pre>
+</div>
+<dl class="docutils">
+<dt>XML DTD</dt>
+<dd>Defines structure of XML documet, with list of legal elements
+alternative to schema</dd>
+<dt>XML STYLE</dt>
+<dd><p class="first">CSS to style XML:</p>
+<div class="highlight-python"><pre>&lt;?xml-stylesheet type="text/css" href="cd_catalog.css" ?&gt;</pre>
+</div>
+<p class="last">XSL (extensible stylesheet language)</p>
+</dd>
+</dl>
+<p>Parse XML via Javascript:</p>
+<div class="highlight-python"><pre>var xmlDoc = new ActiveXObject("Microsoft.XMLDOM");     //create instace of IE parse
+var xmlDoc = document.implementation.createDocument("ns", "root", null);    //ns = name space used, root = xml root element
+xmlDoc.async="false";   //does not execute until full script is loaded</pre>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">XML Notes</a><ul>
+<li><a class="reference internal" href="#syntax-rules">Syntax Rules</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="gnu_make.html"
+                        title="previous chapter">GNU Make Notes</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="index_js.html"
+                        title="next chapter">JavaScript Notes</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/xml.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="index_js.html" title="JavaScript Notes"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="gnu_make.html" title="GNU Make Notes"
+             >previous</a> |</li>
+        <li><a href="index.html">Programming Notes 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Tom Leo.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

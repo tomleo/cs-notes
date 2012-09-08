@@ -1,0 +1,537 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>UNIX Basics &mdash; Programming Notes 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Programming Notes 1.0 documentation" href="../index.html" />
+    <link rel="up" title="UNIX Notes" href="../index_unix.html" />
+    <link rel="next" title="TMUX NOTES" href="tmux.html" />
+    <link rel="prev" title="UNIX Notes" href="../index_unix.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="tmux.html" title="TMUX NOTES"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../index_unix.html" title="UNIX Notes"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Programming Notes 1.0 documentation</a> &raquo;</li>
+          <li><a href="../index_unix.html" accesskey="U">UNIX Notes</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="unix-basics">
+<h1>UNIX Basics<a class="headerlink" href="#unix-basics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="terms">
+<h2>Terms<a class="headerlink" href="#terms" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="boot-process">
+<h3>boot process<a class="headerlink" href="#boot-process" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><dl class="first docutils">
+<dt>ROM/firmware&#8217;s loading of programs for booting (bootstrapping)</dt>
+<dd><ol class="first last upperroman simple">
+<li>bootstrap phase only identifies the hardware avalible for booting and whether it is usable</li>
+</ol>
+</dd>
+</dl>
+</li>
+<li><p class="first">unix kernel is loaded (resides in root partition of system -&gt; /boot/vmlinuz</p>
+</li>
+<li><dl class="first docutils">
+<dt>initialization phase - system processes and scripts are started</dt>
+<dd><ol class="first last upperroman">
+<li><p class="first">init process starts first (is parent of all other processes)</p>
+</li>
+<li><dl class="first docutils">
+<dt>init looks at /etc/inittab which identifies how init should interpret diffrent run levels</dt>
+<dd><ol class="first last loweralpha simple">
+<li>run level is a grouping of processes or daemons (processes that run all the time)</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ol>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="commmands">
+<h2>Commmands<a class="headerlink" href="#commmands" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>jobs</dt>
+<dd>processess</dd>
+<dt>kill %n</dt>
+<dd>kill job</dd>
+<dt>whereis app</dt>
+<dd>location of app ex. /usr/bin/gedit</dd>
+<dt>w</dt>
+<dd>users logged on</dd>
+<dt>uptime</dt>
+<dd>uptime</dd>
+<dt>top</dt>
+<dd>most CPU-intensive tasks running on the server</dd>
+<dt>htop</dt>
+<dd>TODO</dd>
+<dt>free</dt>
+<dd>memory usage</dd>
+<dt>iostat</dt>
+<dd>CPU+IO statistics</dd>
+<dt>kill</dt>
+<dd>TODO</dd>
+<dt>killall</dt>
+<dd>TODO</dd>
+<dt>dmesg</dt>
+<dd>TODO</dd>
+<dt>pgrep</dt>
+<dd>TODO</dd>
+<dt>pkill</dt>
+<dd>TODO</dd>
+<dt>lsof</dt>
+<dd>TODO</dd>
+<dt>tail -f error_log</dt>
+<dd>Show the last 10 lines of error_log and continue to output any new data added to the end of the file.</dd>
+<dt>sudo !!</dt>
+<dd>run the previous command with superuser privileges.</dd>
+<dt>$ cd !$</dt>
+<dd>the &#8221;!$&#8221; is a shortcut for the argument used in the last command. So if you create a directory in one like using mkdir, you can type this command to change to that directory without needing to type out the whole directory name. Handy!</dd>
+<dt>$ ^save^dave^</dt>
+<dd>re-run the previous command, replacing the first instance of &#8220;save&#8221; with &#8220;dave&#8221;.</dd>
+</dl>
+<dl class="docutils">
+<dt>~</dt>
+<dd>short hand for usr home dir</dd>
+</dl>
+<dl class="docutils">
+<dt>?</dt>
+<dd><dl class="first last docutils">
+<dt>substitue for symbol for any single character::</dt>
+<dd><p class="first">$ ls
+foo
+bar
+baz</p>
+<p class="last">$ rm ba?
+$ ls
+foo</p>
+</dd>
+</dl>
+</dd>
+<dt>pwd</dt>
+<dd>dir your in</dd>
+<dt>ls -a</dt>
+<dd>includes hidden files</dd>
+<dt>ls -l</dt>
+<dd>includes extra info</dd>
+<dt>wc -l foo</dt>
+<dd>gives you word count</dd>
+<dt>ls | wc -l</dt>
+<dd>lists number of files</dd>
+<dt>ls | xargs wc -l</dt>
+<dd>number of lines for each file</dd>
+<dt>file</dt>
+<dd>finds file type</dd>
+<dt>cp -l</dt>
+<dd>copy, ask before overwrite</dd>
+</dl>
+<div class="section" id="bash-shortcuts-hot-keys">
+<h3>Bash Shortcuts/Hot Keys<a class="headerlink" href="#bash-shortcuts-hot-keys" title="Permalink to this headline">¶</a></h3>
+<p>Commands are similar to emacs:</p>
+<div class="highlight-python"><pre>Ctrl-a              Move to the start of the line.
+Ctrl-e              Move to the end of the line.
+Alt-] x         Moves the cursor forward to the next occurrence of x.
+Alt-Ctrl-] x        Moves the cursor backwards to the previous occurrence of x.
+Ctrl-u              Delete from the cursor to the beginning of the line.
+Ctrl-k              Delete from the cursor to the end of the line.
+Ctrl-w              Delete from the cursor to the start of the word.
+Ctrl-y              Pastes text from the clipboard.
+Ctrl-l              Clear the screen leaving the current line at the top of the screen.
+Ctrl-x Ctrl-u       Undo the last changes. Ctrl-_
+Alt-r               Undo all changes to the line.
+Alt-Ctrl-e      Expand command line.
+Ctrl-r              Incremental reverse search of history.
+Alt-p               Non-incremental reverse search of history.
+!!              Execute last command in history
+!abc                Execute last command in history beginning with abc
+!n              Execute nth command in history
+^abc^xyz        Replace first occurrence of abc with xyz in last command and execute it</pre>
+</div>
+</div>
+</div>
+<div class="section" id="find">
+<h2>FIND<a class="headerlink" href="#find" title="Permalink to this headline">¶</a></h2>
+<p>starting with the root directory, look for the file containing the string fname:</p>
+<div class="highlight-python"><pre>find / -name {*fname*}</pre>
+</div>
+<p>look in current directory for T.java:</p>
+<div class="highlight-python"><pre>find . -name T.java</pre>
+</div>
+<p>look for files ending in .conf in the /etc folder:</p>
+<div class="highlight-python"><pre>find /etc -name '*conf'</pre>
+</div>
+<p>quotes keep shell from expanding wildcards:</p>
+<div class="highlight-python"><pre>find . -not -name '*.java' -maxdepth 4</pre>
+</div>
+<p>find files:</p>
+<div class="highlight-python"><pre>find . -type f</pre>
+</div>
+<p>find directories:</p>
+<div class="highlight-python"><pre>find . -type d</pre>
+</div>
+<p>find links:</p>
+<div class="highlight-python"><pre>find . -type l</pre>
+</div>
+<p>changed within a day:</p>
+<div class="highlight-python"><pre>find . -mtime -1</pre>
+</div>
+<p>changed within 15 minutes:</p>
+<div class="highlight-python"><pre>find . -mmin -15</pre>
+</div>
+<p>compare to filea:</p>
+<div class="highlight-python"><pre>find . -newer foo.txt</pre>
+</div>
+<p>compare to date:</p>
+<div class="highlight-python"><pre>find . -type f -newermt '2010-01-01'</pre>
+</div>
+<p>find file between dates:</p>
+<div class="highlight-python"><pre>find . -type f -newermt '2010-01-01' ! -newermt '2010-06-01'</pre>
+</div>
+<p>find via permissions:</p>
+<div class="highlight-python"><pre>find . -perm 644
+find . -perm -ug=w</pre>
+</div>
+<p>find via permissions:</p>
+<div class="highlight-python"><pre>find . -size -1k</pre>
+</div>
+<p>find with size more than 100MB:</p>
+<div class="highlight-python"><pre>find . -size +100M</pre>
+</div>
+</div>
+<div class="section" id="grep">
+<h2>Grep<a class="headerlink" href="#grep" title="Permalink to this headline">¶</a></h2>
+<p>Lookup &#8220;AccessFileName .htaccess&#8221;:</p>
+<div class="highlight-python"><pre>grep -n "AccessFileName .htaccess" /etc/httpd/conf/http.conf</pre>
+</div>
+<p>search command history:</p>
+<div class="highlight-python"><pre>history | grep http_load</pre>
+</div>
+<p>search Bananamans home folder recursively and case-insensitively for all files containing &#8220;superted&#8221;.:</p>
+<div class="highlight-python"><pre>$ grep -iR "superted" /home/bananaman/</pre>
+</div>
+<p>search the file Skeletor.txt for lines containing &#8220;Panthro&#8221;
+(case-sensitive).:</p>
+<div class="highlight-python"><pre>$ grep "Panthro" Skeletor.txt</pre>
+</div>
+<p>replace all instances of &#8220;Superman&#8221; with &#8220;Batman&#8221; in SuperheroLeagueTable.csv and output.:</p>
+<div class="highlight-python"><pre>$ sed 's/Superman/Batman/g' SuperheroLeagueTable.csv</pre>
+</div>
+<p>Output the 15th line of BabyGotBack.txt.:</p>
+<div class="highlight-python"><pre>$ awk 'NR==15' BabyGotBack.txt</pre>
+</div>
+<p>search for word matches and display the line number:</p>
+<div class="highlight-python"><pre>grep -nr 'new Foo()' src</pre>
+</div>
+<p>search for term foo and surrounding lines:</p>
+<div class="highlight-python"><pre>grep -r -C 2 foo src</pre>
+</div>
+<p>show any of the last 10 lines of error_log with &#8220;badscript.php&#8221; in them, and watch the file for new lines with &#8220;badscript.php&#8221; in them.:</p>
+<div class="highlight-python"><pre>tail -f error_log | grep "badscript.php"</pre>
+</div>
+<p>List just the sizes of all files in a folder.:</p>
+<div class="highlight-python"><pre>ls -al | awk '{print $5}'</pre>
+</div>
+<p>list files in a folder and replace &#8220;123&#8221; with &#8220;456&#8221; in their names.:</p>
+<div class="highlight-python"><pre>$ ls | sed 's/123/456/g'</pre>
+</div>
+<p>show free space on the /dev/sda1 drive.:</p>
+<div class="highlight-python"><pre>$ df | grep "/dev/sda1" | awk '{print $4}'</pre>
+</div>
+<p>output the third item on the third line of vmstat (the amount of virtual memory in use).:</p>
+<div class="highlight-python"><pre>$ vmstat | awk 'NR==3' | awk '{print $3}'</pre>
+</div>
+<p>list all files in a directory with their attributes, reduce that list to just their names, filter for just those containing &#8220;Holiday&#8221; and, for those, just show their file extensions (yes, a hugely contrived example).:</p>
+<div class="highlight-python"><pre>$ ls -al | awk '{print $8}' | grep "Holiday" | sed 's/^[^.]*\.//g'</pre>
+</div>
+</div>
+<div class="section" id="emacs">
+<h2>Emacs<a class="headerlink" href="#emacs" title="Permalink to this headline">¶</a></h2>
+<p>Alt (AKA META)</p>
+<dl class="docutils">
+<dt>Basic Commands::</dt>
+<dd><p class="first">Alt-&lt;       Move to beginning of file
+Alt-&gt;       Move to end of file</p>
+<p>Ctrl-v      Move forward one page (screen full)
+Alt-v       Move back one screen
+Ctrl-l      Centers screen around cursor</p>
+<p>Ctrl-a      Move to beginning of line
+Ctrl-e      Move to end of line
+Alt-a       Move to beginning of sentence
+Alt-e       Move to end of sentence</p>
+<p>Ctrl-f      Move cursor right
+Ctrl-b      Move Cursor left
+Ctrl-p      Move Cursor up
+Ctrl-n      Move Cursor down
+Alt-f       Move cursor right (by word)
+Alt-b       Move Cursor left (by word)</p>
+<p>Ctrl-d      Backspace/Delete
+Ctrl-k      rm all text on a line
+Ctrl-y      brings back removed text
+Ctrl-x u    Undo</p>
+<p class="last">Ctrl-x Ctrl-f Find a file       Opens new file
+Ctrl-x Ctrl-f Ctrl-g            Cancels minbuffer
+Ctrl-x Ctrl-s Save File</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="screen">
+<h2>Screen<a class="headerlink" href="#screen" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>screen -list</dt>
+<dd>List Screen sessions</dd>
+<dt>screen -r (name)</dt>
+<dd>Reattach</dd>
+<dt>screen -S (name)</dt>
+<dd>Creates screen with meaningful name</dd>
+<dt>Crl-a Crl-d</dt>
+<dd>Detach</dd>
+</dl>
+</div>
+<div class="section" id="package-management">
+<h2>Package Management<a class="headerlink" href="#package-management" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="apt">
+<h3>APT<a class="headerlink" href="#apt" title="Permalink to this headline">¶</a></h3>
+<p>remove program and configuration files associated with it:</p>
+<div class="highlight-python"><pre>sudo apt-get remove --purge &lt;program&gt;</pre>
+</div>
+<p>install latest version of every package, and new dependencies:</p>
+<div class="highlight-python"><pre>sudo apt-get dist-upgrade</pre>
+</div>
+<p>remove packages (not programs):</p>
+<div class="highlight-python"><pre>sudo apt-get clean</pre>
+</div>
+<p>remove only older packages:</p>
+<div class="highlight-python"><pre>sudo apt-get autoclean</pre>
+</div>
+<p>remove package and dependencies:</p>
+<div class="highlight-python"><pre>sudo aptitude purge &lt;program&gt;</pre>
+</div>
+<p>remove dependencies from old uninstalls, no longer needed:</p>
+<div class="highlight-python"><pre>sudo apt-get autoremove</pre>
+</div>
+</div>
+<div class="section" id="update-alternatives">
+<h3>Update Alternatives<a class="headerlink" href="#update-alternatives" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="usefull-programs">
+<h2>Usefull Programs<a class="headerlink" href="#usefull-programs" title="Permalink to this headline">¶</a></h2>
+<p>Quake pull down menu:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="c"># apt-get install konsole yakuake</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>Screen Capture</dt>
+<dd><ul class="first last simple">
+<li>xvidcap</li>
+</ul>
+</dd>
+<dt>Rip DVD&#8217;s</dt>
+<dd><ul class="first last simple">
+<li>acidrip</li>
+</ul>
+</dd>
+</dl>
+<p>Merge pdf&#8217;s:</p>
+<div class="highlight-python"><pre>gs -dNOPAUSE -sDEVICE=pdfwrite -sOUTPUTFILE=out.pdf -dBATCH file1.pdf file2.pdf</pre>
+</div>
+</div>
+<div class="section" id="keychain">
+<h2>Keychain<a class="headerlink" href="#keychain" title="Permalink to this headline">¶</a></h2>
+<p>Use Ubuntu keychain for ssh logins?:</p>
+<div class="highlight-python"><pre>[cmd]   apt-get update &amp;&amp; apt-get install keychain
+[cmd]   ssh-keygen -t rsa
+        edit $HOME/.bash_profile
+        add this code:
+
+        ### START-Keychain ###
+        # Let  re-use ssh-agent and/or gpg-agent between logins
+        /usr/bin/keychain $HOME/.ssh/id_dsa
+        source $HOME/.keychain/$HOSTNAME-sh
+        ### End-Keychain ###</pre>
+</div>
+</div>
+<div class="section" id="boot">
+<h2>Boot<a class="headerlink" href="#boot" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="grub">
+<h3>Grub<a class="headerlink" href="#grub" title="Permalink to this headline">¶</a></h3>
+<p>adding &#8220;profile&#8221; no quotes, to end of kernel line (in grub) enables profiling</p>
+</div>
+</div>
+<div class="section" id="lamp-install">
+<h2>Lamp Install<a class="headerlink" href="#lamp-install" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-BashSessionLexer"><pre>sudo apt-get install apache2
+sudo apt-get install php5 libapache2-mod-php5
+sudo /etc/init.d/apache2 restart
+sudo apt-get install mysql-server
+sudo apt-get install libapache2-mod-auth-mysql php5-mysql phpmyadmin
+gksudo gedit /etc/php5/apache2/php.ini
+    [Change] ;extension=mysql.so
+    [To    ]  extension=mysql.so
+sudo /etc/init.d/apache2 restart
+sudo ln -s /usr/share/phpmyadmin/ /var/www/phpmyadmin
+sudo apt-get install php5-curl
+sudo /etc/init.d/apache2 restart</pre>
+</div>
+</div>
+<div class="section" id="file-coversions">
+<h2>File Coversions<a class="headerlink" href="#file-coversions" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="sed">
+<h2>SED<a class="headerlink" href="#sed" title="Permalink to this headline">¶</a></h2>
+<p>replaces rn with n:</p>
+<div class="highlight-python"><pre>sed 's/.$//' winfile &gt; unixfile</pre>
+</div>
+<p>replaces n with rn:</p>
+<div class="highlight-python"><pre>sed 's/$/\r/' unixfile &gt; winfile</pre>
+</div>
+<p>trims leading whitespace:</p>
+<div class="highlight-python"><pre>sed -i 's/^[ \t]*//' t.txt</pre>
+</div>
+<p>trims trailing whitespace:</p>
+<div class="highlight-python"><pre>sed -i 's/[ \t]*$//' t.txt</pre>
+</div>
+<p>trims leading and trailing whitespace:</p>
+<div class="highlight-python"><pre>sed -i 's/^[ \t]*//;s/[ \t]*$//' t.txt</pre>
+</div>
+<p>delete&#8217;s blank lines:</p>
+<div class="highlight-python"><pre>sed '/^$/ d' file</pre>
+</div>
+</div>
+<div class="section" id="glib">
+<h2>Glib<a class="headerlink" href="#glib" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">UNIX Basics</a><ul>
+<li><a class="reference internal" href="#terms">Terms</a><ul>
+<li><a class="reference internal" href="#boot-process">boot process</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#commmands">Commmands</a><ul>
+<li><a class="reference internal" href="#bash-shortcuts-hot-keys">Bash Shortcuts/Hot Keys</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#find">FIND</a></li>
+<li><a class="reference internal" href="#grep">Grep</a></li>
+<li><a class="reference internal" href="#emacs">Emacs</a></li>
+<li><a class="reference internal" href="#screen">Screen</a></li>
+<li><a class="reference internal" href="#package-management">Package Management</a><ul>
+<li><a class="reference internal" href="#apt">APT</a></li>
+<li><a class="reference internal" href="#update-alternatives">Update Alternatives</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#usefull-programs">Usefull Programs</a></li>
+<li><a class="reference internal" href="#keychain">Keychain</a></li>
+<li><a class="reference internal" href="#boot">Boot</a><ul>
+<li><a class="reference internal" href="#grub">Grub</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#lamp-install">Lamp Install</a></li>
+<li><a class="reference internal" href="#file-coversions">File Coversions</a></li>
+<li><a class="reference internal" href="#sed">SED</a></li>
+<li><a class="reference internal" href="#glib">Glib</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="../index_unix.html"
+                        title="previous chapter">UNIX Notes</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="tmux.html"
+                        title="next chapter">TMUX NOTES</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="../_sources/unix/basics.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="tmux.html" title="TMUX NOTES"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="../index_unix.html" title="UNIX Notes"
+             >previous</a> |</li>
+        <li><a href="../index.html">Programming Notes 1.0 documentation</a> &raquo;</li>
+          <li><a href="../index_unix.html" >UNIX Notes</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Tom Leo.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>

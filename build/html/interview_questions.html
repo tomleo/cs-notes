@@ -1,0 +1,180 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Amazon &mdash; Programming Notes 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/default.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Programming Notes 1.0 documentation" href="index.html" />
+    <link rel="next" title="Arduino" href="arduino.html" />
+    <link rel="prev" title="Algorithms" href="algorithms.html" /> 
+  </head>
+  <body>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="arduino.html" title="Arduino"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="algorithms.html" title="Algorithms"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Programming Notes 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body">
+            
+  <div class="section" id="amazon">
+<h1>Amazon<a class="headerlink" href="#amazon" title="Permalink to this headline">¶</a></h1>
+<ul>
+<li><dl class="first docutils">
+<dt>Difference between linkedlist &amp; array</dt>
+<dd><p class="first last">Linked list can more easily have data of different sizes
+Arrays are fixed size
+Changing the order of linked list is easier...?
+Lnked List: can interate while changes are happening?
+Linked List: nodes are allocated consecutively in memory improving locality
+of reference and enchances data cache</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Memory fragmentation</dt>
+<dd><p class="first last">storage space used inefficiently</p>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Difference between hashtable and hashmap</dt>
+<dd><p class="first last">Hashtable - null keys/values not allowed
+Hashmap - order may not remain constant</p>
+</dd>
+</dl>
+</li>
+<li><p class="first">Count number of 1&#8217;s in binary representation of integer</p>
+</li>
+</ul>
+<dl class="docutils">
+<dt>def bin(x):</dt>
+<dd><p class="first">sign = &#8216;&#8217;
+if x &lt; 0:</p>
+<blockquote>
+<div>sign = &#8216;-&#8216;</div></blockquote>
+<p>x = abs(x)
+bits = []
+while x:</p>
+<blockquote>
+<div>#divmod = ((x-x%y)/y, x%y)
+x, rmost = divmod(x, 2)
+#print x, rmost
+bits.append(rmost)</div></blockquote>
+<p>str_bin = &#8216;&#8217;.join(str(b) for b in reversed(bits or [0]))
+c = 0
+for t in str_bin:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>if int(t) == 1:</dt>
+<dd>c+=1</dd>
+</dl>
+</div></blockquote>
+<p class="last">return c</p>
+</dd>
+</dl>
+<ul>
+<li><p class="first">merge sorted linked lists</p>
+</li>
+<li><p class="first">find prime number in given range</p>
+</li>
+<li><p class="first">priorety queue</p>
+<blockquote>
+<div><p>Queue ATD aka FIFO Queue</p>
+<p>Highest priorety first
+Enqueue - start at end of line
+Dequeue - exit at from of line</p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar">
+        <div class="sphinxsidebarwrapper">
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="algorithms.html"
+                        title="previous chapter">Algorithms</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="arduino.html"
+                        title="next chapter">Arduino</a></p>
+  <h3>This Page</h3>
+  <ul class="this-page-menu">
+    <li><a href="_sources/interview_questions.txt"
+           rel="nofollow">Show Source</a></li>
+  </ul>
+<div id="searchbox" style="display: none">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="arduino.html" title="Arduino"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="algorithms.html" title="Algorithms"
+             >previous</a> |</li>
+        <li><a href="index.html">Programming Notes 1.0 documentation</a> &raquo;</li> 
+      </ul>
+    </div>
+    <div class="footer">
+        &copy; Copyright 2012, Tom Leo.
+      Created using <a href="http://sphinx.pocoo.org/">Sphinx</a> 1.1.3.
+    </div>
+  </body>
+</html>
