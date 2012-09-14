@@ -417,6 +417,8 @@ CLASS
     issubclass()
 
 TRICKS
+   ::
+
     x = None    # None placeholder
 
     obj1 = obj2
@@ -467,13 +469,19 @@ TRICKS
 
        
 PYDOC
-    pydoc [module]      #produces plaintext on console
-    pydoc -w [module]   #creates html output in current dir
-    pydoc-p 5000        #html output @ localhost:5000/[module]
+
+   ::
+
+   pydoc [module]      #produces plaintext on console
+   pydoc -w [module]   #creates html output in current dir
+   pydoc-p 5000        #html output @ localhost:5000/[module]
     
 PYTHON lIBRARY
-    chr(str)        #Character - takes str, returns ASCII num
-    ord(int)        #Ordinal - takes int, returns ASCII letter
+
+   ::
+
+   chr(int)        #Character - takes int, returns ASCII letter
+   ord(str)        #Ordinal - takes str, returns ASCII num
 
 
 PEP8
