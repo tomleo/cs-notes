@@ -178,8 +178,8 @@ appending and extending a list
     >>> mList
     ['a', 'b', 'c', 'd']
 
-Librarys
---------
+Librarys / Dictionarys
+----------------------
 
 keys must be immutable objects (like strings)
 
@@ -195,6 +195,31 @@ keys must be immutable objects (like strings)
     'potter'
     >>> lib.has_key('hello')
     False
+
+Adding a value to a normal dictionary
+
+.. code-block:: pycon
+
+   In [8]: D = {}
+   In [9]: k = 5
+   In [11]: if k not in D:
+      ....:     D[k] = int()
+      ....: else:
+      ....:     D[k] += 1
+      ....:     
+   In [12]: D
+   Out[12]: {5: 1}
+
+Adding a value to a defaultdict
+
+.. code-block:: pycon
+
+   In [14]: from collections import defaultdict
+   In [15]: from collections import defaultdict
+   In [16]: D = defaultdict(int)
+   In [17]: D[1] += 1
+   In [18]: D
+   Out[18]: defaultdict(<type 'int'>, {1: 1})
 
 Files/IO
 --------
@@ -628,3 +653,112 @@ __metaclass__ at the MODULE level, and try to do the same.
 
 Then if it can't find any __metaclass__ at all, it will use type to create
 the class object.
+
+Django
+------
+
+Alternative to auto_now and auto_now_add for django models
+   http://stackoverflow.com/a/1737078/465270
+
+
+URLconf
+~~~~~~~
+
+mapping between URL patterns and Python callback functions (your views)
+url patterns follow the format::
+
+   (regular expression, Python callback function [, optional dictionary])
+
+   urlpatterns = patterns('prefix',
+      (r'regexp', 'view or include', { additional parameters ... }),
+      ...
+   )
+
+values are passed to view in the form of a key-value pair
+
+.. code-block:: python
+   
+   #the URL Pattern to match
+   (r'^articles/(?P<year>\d{4})/(?P<month>\d{2})/(?P<day>\d{2})/$',
+   'news.views.article_detail'),
+
+A request to /articles/2003/03/03/ would yeild::
+
+   news.views.article_detail(request, year=2003, month=03, day=03)
+
+
+login_required
+~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+   from django.contrib.auth.decorators import login_required
+
+   @login_required
+   def my_view(request):
+      # ...
+
+limiting access based on a certain permission and login
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+   def user_can_vote(user):
+      return user.is_authenticated() and user.has_perm("polls.can_vote")
+
+   @user_passes_test(user_can_vote, login_url="/login/")
+   def vote(request):
+      #code assumes a user logged-in with correct permissions
+
+permission shortcut
+~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: python
+
+   from django.contrib.auth.decorators import permission_required
+
+   @permission_required('polls.can_vote', login_url="/login/")
+   def vote(request):
+      #---
+
+registration view example
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The View
+
+.. code-block:: python
+
+   from django import forms
+   from django.contrib.auth.forms import UserCreationForm
+   from django.http import HttpResponseRedirect
+   from django.shortcuts import render_to_response
+
+   def register(request):
+       if request.method == 'POST':
+           form = UserCreationForm(request.POST)
+           if form.is_valid():
+               new_user = form.save()
+               return HttpResponseRedirect("/books/")
+       else:
+           form = UserCreationForm()
+           return render_to_response("registration/register.html", {
+            'form': form,
+           })
+
+The Template
+
+.. code-block:: python
+
+   {% extends "base.html" %}
+   {% block title %}Create an account{% endblock %}
+   {% block content %}
+       <h1>Create an account</h1>
+       <form action="" method="post">
+           {{ form.as_p }}
+           <input type="submit" value="Create the account">
+       </form>
+   {% endblock %}
+
+PERMISSIONS IN TEMPLATE
+
+
