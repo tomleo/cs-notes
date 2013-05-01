@@ -2,18 +2,6 @@
 JavaScript Basics
 =================
 
-Comments
---------   
-
-Single-line comment::
-    
-    //
-
-Multi-line comment::
-
-    /* 
-    */
-
 Vars
 -----
 
@@ -24,89 +12,18 @@ vars are case sensitive, and must start with letter
    var x=5;
    var name="value"
 
-
-Operators
----------
-
-==========  ======================
-Type        Symbol
-----------  ----------------------
-Arithmetic  +, -, *, /, %, ++, --
-Assignment  =, +=, -=, *=, /=, %=
-==========  ======================
-
-Comparison
-----------
-
-======   ========================
-Symbol   Meaning
-------   ------------------------
-==       equal to
-===      equal to (value + type)
-!=       not equal to
->        greater than
-<        less than
-<=       less than or equal
->=       greater than or equal
-&&       and
-||       or
-======   ========================
-
-Function
----------
+Looping n Shit
+==============
 
 .. code-block:: javascript
 
-   function functionname(var, var2) {
-      //code goes here
-   }
+   for (var = startval; var <= endval; var = var + increment){ }
 
-function literal definition
-
-.. code-block:: javascript
-
-   var square = function(var, var2) {
-      //code goes here
-   }
-
-loops
----------
-
-.. code-block:: javascript
-
-   for (var = startval; var <= endval; var = var + increment){
-      //code
-   }
-
-   for(i=0, j=0, k=0; i<50; i++, j++, k++){
-		document.write("i=" + i + " ");
-		document.write("j=" + j + " ");
-		document.write("k=" + k);
-		document.write("<br />")
-	}
-
-   //This will yeild
-   /*
-   i=0 j=0 k=0 
-   i=1 j=1 k=1 
-   i=2 j=2 k=2 
-   i=3 j=3 k=3 
-   i=4 j=4 k=4 
-   i=5 j=5 k=5 
-   i=6 j=6 k=6 
-   i=7 j=7 k=7 
-   i=8 j=8 k=8 
-   i=9 j=9 k=9 
-   */
+   for(i=0, j=0, k=0; i<50; i++, j++, k++){ }
     
+   for (var in array){ }
 
-   for (var in array){
-      //code
-   }
-
-   while (var <= endval) {
-      //code
-   }
+   while (var <= endval) { }
 
    do {
       //code
@@ -118,64 +35,62 @@ loops
        //do something
    }
 
-break;
-   breaks from loop
-continue;
-   breaks from current loop, move to next val
+   break;
+      breaks from loop
 
-Excapes
---------
+   continue;
+      breaks from current loop, move to next val
 
-======   ================
-Symbol   Value
-======   ================
-\'       single quote
-\"       double quote
-\&       ampersand
-\\       backslash
-\n       newline
-\r       carriage return
-\t       tab
-\b       backspace
-\f       form feed
-======   ================
+Syntax n Shit
+=============
 
-Arrays
----------
+::
 
-.. code-block:: javascript
+   Comments
+   ---------------------------------
+   //
+   /*  */
 
-   var myArr = new Array();
 
-Bool Objects
-------------
+   Arithmetic  +, -, *, /, %, ++, --
+   Assignment  =, +=, -=, *=, /=, %=
+   Comparison
+      ==       equal to
+      ===      equal to (value + type)
+      !=       not equal to
+      >        greater than
+      <        less than
+      <=       less than or equal
+      >=       greater than or equal
+      &&       and
+      ||       or
 
-False
-   0, -0, null, "", false, undefined, Non
+   Escapes
+   ---------------------------------
 
-True
-   everything else
+   \'       single quote
+   \"       double quote
+   \&       ampersand
+   \\       backslash
+   \n       newline
+   \r       carriage return
+   \t       tab
+   \b       backspace
+   \f       form feed
 
-Numbers
-----------
+   Bool Objects
+   ---------------------------------
+   False
+      0, -0, null, "", false, undefined, Non
 
-Math
-   Math.round(double)
-   Math.random()
-   Math.max(9,5)
-   Math.min(#, #)
-
-Special Numbers
-   Infinity
-   Nan
-      Not a number (Does not exist)
-      Can't be compared to other numbers or itself (isNan used to test if num is Nan)
+   True
+      everything else
 
 
 Objects
 ========
 
-are essentiall key-value pairs
+are essentialy key-value pairs
 
 .. code-block:: javascript
 
@@ -184,9 +99,7 @@ are essentiall key-value pairs
       "date": "10/4/03"
     };
 
-You don't need to quote variables the following will be the same
-
-.. code-block:: javascript
+    //You don't need to quote variables the following will be the same
 
     var obj = {
       name: "myObj"
@@ -221,23 +134,6 @@ You can create objects within objects in javascript
       }
     };
 
-Function Operator
------------------
-
-.. code-block:: javascript
-
-    var func = function() {
-      console.log("hello");
-    };
-
-    func(); // "hello"
-
-    var func = function( parm ) {
-      console.log(parm);
-    };
-
-    func("hello"); // "hello"
-
 
 Scope
 ------
@@ -263,43 +159,13 @@ access to properties of obj::
    obj.date.formatDate(); // "1/1/2012"
 
 
-Interate over objects with "for in loop"
-----------------------------------------
-
-.. code-block:: javascript
-
-    var date = {
-      day: 4,
-      month: 2
-    };
-
-    for( var i in date ) {
-      console.log(i);
-    }
-
-    /*
-    day
-    month
-    */
-
-    for( var i in date ) {
-      console.log(date[i]);
-    }
-
-    /*
-    4
-    2
-    */
-
-    for ( var i in date ) {
-      console.log(date.i);
-    }
-
-    // This will not work!
-
 
 Arrays
 ======
+
+.. code-block:: javascript
+
+   var myArr = new Array();
 
 arrays are objects
 arrays have a length property
@@ -308,49 +174,60 @@ array has a push operator
 .. code-block:: javascript
 
   var stack = ["a", "b"];
-  stack.push("c"); // returns 3 (the index?) and stack now equals ["a", "b", "c"]
+  stack.push("c"); // returns 3 (the new length?) and stack now equals ["a", "b", "c"]
 
   stack["push"]("d"); //returns 4 and stack now equals ["a", "b", "c", "d"]
 
   stack[10] = "j"; //will add j to 10th number
 
 you can add properties to array objects
-NOTE: a for-in loop will print all indexes as well as properties
 
 .. code-block:: javascript
 
     var A = ["a", "b"];
     A.newProperty = "hello";
 
-Functions
-=========
-
-decalring a named function
+for-in loop will print all indexes as well as properties
 
 .. code-block:: javascript
 
-    function foo ( chickenParm ) {
-      console.log( chickenParm )
+    var date = {
+      day: 4,
+      month: 2
+    };
+
+    for(var i in date) {
+      console.log(i);         //returns day, month
+      console.log(date[i]);   //returns 4, 2
+      console.log(date.i);    //ERROR: this will not work
     }
 
-    //invoke function
-    foo("SKIOOOOOO");
+Functions
+=========
 
-    /*SKIOOOOO*/
+function
+
+.. code-block:: javascript
+
+   function functionname(var, var2) {
+      //code goes here
+   }
+
+function literal definition
+
+.. code-block:: javascript
+
+   var square = function(var, var2) {
+      //code goes here
+   }
 
 functions are objects you can add properties to functions
 
 .. code-block:: javascript
 
-    foo.grilledChicken = "YUM!"; //property added to foo function object
-    console.log( myAlert.newProp );
-    /*YUM!*/
+   //property added to foo function object
+   foo.grilledChicken = "YUM!"; 
 
-MARKUP
-======
-
-  <script type="text/javascript"></script>
-  <script src="external.js"></script>
 
 SYNTAX
 ======
@@ -363,98 +240,20 @@ SYNTAX
     var x=5;            vars are case sensitive,
     var name="value"    and must start with letter
 
-
-Operators
-=========
-
-::
-
-    Arithmetic          +, -, *, /, %, ++, --
-    Assignment          =, +=, -=, *=, /=, %=
-    Comparison          ==      equal to
-                        ===     equal to (value + type)
-                        !=      not equal to
-                        >       greater than
-                        <       less than
-                        <=      less than or equal
-                        >=      greater than or equal
-                        &&      and
-                        ||      or
-
-Function
-========
-
-.. code-block:: javascript
-
-    function functionname(var, var2,...){ /*code*/ }
-
-    //function literal definition
-    var square = function(var, var2,...){ /*code*/ }
-
-Looping
-=======
-
-.. code-block:: javascript
-
-    for (var = startval; var <= endval; var = var + increment){ /*code*/ }
-    for (var in array){ /*code*/ }
-    while (var <= endval) { /*code*/ }
-    do { /*code*/ }while(var <= endval);
-    try { /*somethin*/ }catch(err) { /*do something*/  }
-
-    break;      break from loop
-    continue;   break from current loop, move to next val
-
-Escapes
-=======
-
-::
-
-    \'      single quote
-    \"      double quote
-    \&      ampersand
-    \\      backslash
-    \n      newline
-    \r      carriage return
-    \t      tab
-    \b      backspace
-    \f      form feed
-
-Define Array
-============
-
-.. code-block:: javascript
-
-    var myArr = new Array();
-
-
-Bool Objects
-============
-
-::
-
-    FALSE   0, -0, null, "", false, undefined, Non
-    TRUE    everything else...
-
 Numbers
-=======
+----------
 
-::
+Math
+   Math.round(double)
+   Math.random()
+   Math.max(9,5)
+   Math.min(#, #)
 
-    Math.round(double)
-    Math.random()
-    Math.max(9, 5)
-    Math.min(#, #)
-
-Special Nums
-------------
-
-Infinity
-Nan
-   Not a number (Does not exsist) Can't be compared to other nums or itself (isNan - used to test if num is Nan)
-
-Hex & Octal Literals
---------------------
+Special Numbers
+   Infinity
+   Nan
+      Not a number (Does not exist)
+      Can't be compared to other numbers or itself (isNan used to test if num is Nan)
 
 hex literal begins with "0x or 0X"::
 
@@ -563,20 +362,6 @@ Random Style Sheet
     rand = rand();
     document.write(css[rand]);
 
-3RD Party
-=========
-
-Fixing PNG's in IE6 with DD_BelatedPNG
-http://www.dillerdesign.com/experiment/DD_belatedPNG/
-
-.. code-block:: html
-
-    <!--[if IE 6]>
-        <script src="DD_belatedPNG.js"></script>
-    <![endif]-->
-    <script type="text/javascript">
-        DD_belatedPNG.fix(".linkButton");
-    </script>
 
 Super Class Inheritance with JavaScript
 =======================================
@@ -603,4 +388,38 @@ Events and Responses
    //ajaxloader() function is the even listener
 
 
+Functional Programming
+======================
 
+Array Comprehension
+-------------------
+[i * i for i of [1, 2, 3]];
+
+Map
+---
+[1, 2, 3].map(function (i) { return i * i });
+[650,123,4567].map(String).join('-');
+
+Filter
+------
+[1,4,2,3,-8].filter(function(i) { return i < 3 });
+
+this
+----
+
+this in the global context refers to the window object, *this* is also global
+inside functions if *use strict* is not being used.
+
+.. code-block:: javascript
+
+   console.log(this === window); // true
+
+   //if not using strict
+   function checkThisOut () {
+      console.log(this === window); // true
+   }
+
+   //if using stricut 
+   function checkThisOut () {
+      console.log(this === window); // false
+   }

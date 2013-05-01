@@ -438,5 +438,34 @@ delete's blank lines::
 
    sed '/^$/ d' file                       
 
-Glib
-====
+
+Diff & Patch
+============
+
+see diff of file
+   diff -u <orig> <modified>
+
+patch a file
+   patch <orig> name.patch
+
+create patch from recursive diff
+   diff -ur recipes recipes-revised > recipe.patch
+
+If recipies is in the same directory as the patch
+   patch -p1 < more-garlic.patch
+
+Patching in git
+---------------
+1. Make change, add, commit
+2. git format-patch origin/master
+
+Tar
+===
+
+c = create
+x = extract
+z = .gz
+f = force (not sure why this is needed, but fails without it)
+
+tar xzf <folder.tar.gz>
+tar czf folder.tar.gz folder

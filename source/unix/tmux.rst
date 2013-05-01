@@ -1,13 +1,64 @@
 TMUX NOTES
 ==========
 
-Starting tmux::
+Start tmux session::
+   tmux new-session -s <name>
+   tmux new -s <name>
 
-    tmux -t
+Detatch session::
+   Ctrl-b d
 
-Starting tmux named session
+List existing tmux sessions::
+   tmux list-sessions
+   tmux ls
 
-the -t option forces to start in UTF-8 mode everytime
+start tmux session::
+   tmux attach -t <name>
+
+kill session (while in the session::
+   exit
+
+kill session::
+   tmux kill-session -t <name>
+
+new window::
+   PRE c
+
+rename window::
+   PRE ,
+
+next/previous window::
+   PRE n
+   PRE p
+
+n window::
+   PRE n
+
+find window::
+   PRE f
+
+list windows::
+   PRE w
+
+close window::
+   PRE &
+
+split pane verticle::
+   PRE %
+
+split pane horizontal::
+   PRE "
+
+switch pane::
+   PRE o
+   PRE <left|right|top|down arrow>
+
+close pane::
+   exit
+   PRE x
+
+LEFT off @ 1.5 Working with Panes - tmux book
+---------------------------------------------
 
 ::
 
